@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-    package="com.wanwan.androidoverride">
+    package="com.wanwan.lifecyclecallback">
 
     <application
         android:allowBackup="true"
