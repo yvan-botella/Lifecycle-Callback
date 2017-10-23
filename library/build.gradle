@@ -17,10 +17,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-
     buildTypes {
         android.libraryVariants.all { variant -> formatLibraryVariantOutput(parent, defaultConfig, variant) }
 

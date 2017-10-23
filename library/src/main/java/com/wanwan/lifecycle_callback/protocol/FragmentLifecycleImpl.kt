@@ -1,6 +1,5 @@
 package com.wanwan.lifecycle_callback.protocol
 
-import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -51,84 +50,84 @@ interface FragmentLifecycleImpl {
 
 
     //region added
-    fun onBackPressed(fragment: Fragment): Boolean = false
+    fun onBackPressed(fragment: Any): Boolean = false
     //endregion added
 
     //region override
-    fun onActivityCreated(fragment: Fragment, savedInstanceState: Bundle?) {
+    fun onActivityCreated(fragment: Any, savedInstanceState: Bundle?) {
         foreachCallback { callback -> callback.onActivityCreated(fragment, savedInstanceState) }
     }
 
-    fun onActivityResult(fragment: Fragment, requestCode: Int, resultCode: Int, data: Intent?) {
+    fun onActivityResult(fragment: Any, requestCode: Int, resultCode: Int, data: Intent?) {
         foreachCallback { callback -> callback.onActivityResult(fragment, requestCode, resultCode, data) }
     }
 
-    fun onAttach(fragment: Fragment, context: Context?) {
+    fun onAttach(fragment: Any, context: Context?) {
         foreachCallback { callback -> callback.onAttach(fragment, context) }
     }
 
-    fun onAttachFragment(fragment: Fragment, attachFragment: Fragment?) {
+    fun onAttachFragment(fragment: Any, attachFragment: Any?) {
         foreachCallback { callback -> callback.onAttachFragment(fragment, attachFragment) }
     }
 
-    fun onDestroy(fragment: Fragment) {
+    fun onDestroy(fragment: Any) {
         foreachCallback { callback -> callback.onDestroy(fragment) }
     }
 
-    fun onConfigurationChanged(fragment: Fragment, newConfig: Configuration?) {
+    fun onConfigurationChanged(fragment: Any, newConfig: Configuration?) {
         foreachCallback { callback -> callback.onConfigurationChanged(fragment, newConfig) }
     }
 
-    fun onCreate(fragment: Fragment, savedInstanceState: Bundle?) {
+    fun onCreate(fragment: Any, savedInstanceState: Bundle?) {
         foreachCallback { callback -> callback.onCreate(fragment, savedInstanceState = null) }
     }
 
-    fun onCreateView(fragment: Fragment, inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    fun onCreateView(fragment: Any, inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return foreachResultCallback<View> { callback, result -> callback.onCreateView(fragment, result, inflater, container, savedInstanceState) }
     }
 
-    fun onDetach(fragment: Fragment) {
+    fun onDetach(fragment: Any) {
         foreachCallback { callback -> callback.onDetach(fragment) }
     }
 
-    fun onDestroyView(fragment: Fragment) {
+    fun onDestroyView(fragment: Any) {
         foreachCallback { callback -> callback.onDestroyView(fragment) }
     }
 
-    fun onLowMemory(fragment: Fragment) {
+    fun onLowMemory(fragment: Any) {
         foreachCallback { callback -> callback.onLowMemory(fragment) }
     }
 
-    fun onOptionsItemSelected(fragment: Fragment, item: MenuItem?): Boolean {
+    fun onOptionsItemSelected(fragment: Any, item: MenuItem?): Boolean {
         val result = foreachResultCallback<Boolean> { callback, result -> callback.onOptionsItemSelected(fragment, result, item) }
         return result ?: false
     }
 
-    fun onPause(fragment: Fragment) {
+    fun onPause(fragment: Any) {
         foreachCallback { callback -> callback.onPause(fragment) }
     }
 
-    fun onRequestPermissionsResult(fragment: Fragment, requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    fun onRequestPermissionsResult(fragment: Any, requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         foreachCallback { callback -> callback.onRequestPermissionsResult(fragment, requestCode, permissions, grantResults) }
     }
 
-    fun onResume(fragment: Fragment) {
+    fun onResume(fragment: Any) {
         foreachCallback { callback -> callback.onResume(fragment) }
     }
 
-    fun onSaveInstanceState(fragment: Fragment, outState: Bundle?) {
+    fun onSaveInstanceState(fragment: Any, outState: Bundle?) {
         foreachCallback { callback -> callback.onSaveInstanceState(fragment, outState) }
     }
 
-    fun onStart(fragment: Fragment) {
+    fun onStart(fragment: Any) {
         foreachCallback { callback -> callback.onStart(fragment) }
     }
 
-    fun onStop(fragment: Fragment) {
+    fun onStop(fragment: Any) {
         foreachCallback { callback -> callback.onStop(fragment) }
     }
 
-    fun onViewCreated(fragment: Fragment, view: View?, savedInstanceState: Bundle?) {
+    fun onViewCreated(fragment: Any, view: View?, savedInstanceState: Bundle?) {
         foreachCallback { callback -> callback.onViewCreated(fragment, view, savedInstanceState) }
     }
 
