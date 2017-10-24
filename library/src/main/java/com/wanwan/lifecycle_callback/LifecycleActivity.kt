@@ -16,9 +16,11 @@ import java.util.*
 /**
  * Created by yvan.botella on 12/10/2017.
  */
-open class LifecycleActivity : Activity(), ActivityLifecycleImpl {
+open abstract class LifecycleActivity : Activity(), ActivityLifecycleImpl {
 
     override var callbacks = Stack<ActivityLifecycleCallbacks>()
+
+    abstract fun registerActivityCallback()
 
     //region override
 

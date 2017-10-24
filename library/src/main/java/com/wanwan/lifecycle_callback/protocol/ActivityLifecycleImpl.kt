@@ -9,6 +9,7 @@ import android.os.PersistableBundle
 import android.util.AttributeSet
 import android.view.MenuItem
 import android.view.View
+import com.wanwan.lifecycle_callback.ActivityLifecycleRegister
 import com.wanwan.lifecycle_callback.callback.ActivityLifecycleCallbacks
 import java.util.*
 

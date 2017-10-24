@@ -7,5 +7,5 @@ import com.wanwan.lifecycle_callback.protocol.ActivityLifecycleImpl
  */
 interface ActivityLifecycleRegister {
 
-    fun <T: ActivityLifecycleImpl>register(activity: T)
+    fun register(activity: ActivityLifecycleImpl)
 }
