@@ -16,7 +16,7 @@ import com.wanwan.lifecycle_callback.protocol.TAG
 interface FragmentLifecycleCallbacks: TAG {
 
    //region added
-   fun onBackPressed(fragment: Any, result: Boolean?): Boolean = false
+   fun onBackPressed(fragment: Any, handled: Boolean?): Boolean = handled ?: false
    //endregion added
 
    fun onActivityCreated(fragment: Any, savedInstanceState: Bundle?): Unit? = null
@@ -26,11 +26,11 @@ interface FragmentLifecycleCallbacks: TAG {
    fun onDestroy(fragment: Any): Unit? = null
    fun onConfigurationChanged(fragment: Any, newConfig: Configuration?): Unit? = null
    fun onCreate(fragment: Any, savedInstanceState: Bundle?): Unit? = null
-   fun onCreateView(fragment: Any, result: View?, inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? = null
+   fun onCreateView(fragment: Any, backResult: View?, inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? = null
    fun onDetach(fragment: Any): Unit? = null
    fun onDestroyView(fragment: Any): Unit? = null
    fun onLowMemory(fragment: Any): Unit? = null
-   fun onOptionsItemSelected(fragment: Any, result: Boolean?, item: MenuItem?): Boolean? = null
+   fun onOptionsItemSelected(fragment: Any, handled: Boolean?, item: MenuItem?): Boolean? = handled ?: false
    fun onPause(fragment: Any): Unit? = null
    fun onRequestPermissionsResult(fragment: Any, requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?): Unit? = null
    fun onResume(fragment: Any): Unit? = null

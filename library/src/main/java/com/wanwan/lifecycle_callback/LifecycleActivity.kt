@@ -16,11 +16,13 @@ import java.util.*
 /**
  * Created by yvan.botella on 12/10/2017.
  */
-open abstract class LifecycleActivity : Activity(), ActivityLifecycleImpl {
+abstract class LifecycleActivity : Activity(), ActivityLifecycleImpl {
 
     override var callbacks = Stack<ActivityLifecycleCallbacks>()
 
-    abstract fun registerActivityCallback()
+    init {
+        registerLifecycleCallback()
+    }
 
     //region override
 
@@ -60,8 +62,10 @@ open abstract class LifecycleActivity : Activity(), ActivityLifecycleImpl {
     }
 
     override fun onBackPressed() {
-        super<Activity>.onBackPressed()
-        super<ActivityLifecycleImpl>.onBackPressed(this)
+        val handled = super<ActivityLifecycleImpl>.onBackPressed(this)
+        if (!handled) {
+            super<Activity>.onBackPressed()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -135,8 +139,11 @@ open abstract class LifecycleActivity : Activity(), ActivityLifecycleImpl {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        super<Activity>.onOptionsItemSelected(item)
-        return super<ActivityLifecycleImpl>.onOptionsItemSelected(this, item)
+        val handled = super<ActivityLifecycleImpl>.onOptionsItemSelected(this, item)
+        if (!handled) {
+            return super<Activity>.onOptionsItemSelected(item)
+        }
+        return handled
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {

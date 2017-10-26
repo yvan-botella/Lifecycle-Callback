@@ -18,6 +18,8 @@ interface FragmentLifecycleImpl {
 
     var callbacks: Stack<FragmentLifecycleCallbacks>
 
+    fun registerLifecycleCallback()
+
     //region registering
     fun <T: FragmentLifecycleCallbacks> registerFragmentCallback(callback: T): Boolean  {
         if (!callbacks.contains(callback)) {
@@ -50,7 +52,7 @@ interface FragmentLifecycleImpl {
 
 
     //region added
-    fun onBackPressed(fragment: Any): Boolean = false
+    fun onBackPressed(fragment: Any, handled: Boolean): Boolean = handled
     //endregion added
 
     //region override
@@ -83,7 +85,7 @@ interface FragmentLifecycleImpl {
     }
 
     fun onCreateView(fragment: Any, inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return foreachResultCallback<View> { callback, result -> callback.onCreateView(fragment, result, inflater, container, savedInstanceState) }
+        return foreachResultCallback<View> { callback, backResult -> callback.onCreateView(fragment, backResult, inflater, container, savedInstanceState) }
     }
 
     fun onDetach(fragment: Any) {
@@ -98,9 +100,9 @@ interface FragmentLifecycleImpl {
         foreachCallback { callback -> callback.onLowMemory(fragment) }
     }
 
-    fun onOptionsItemSelected(fragment: Any, item: MenuItem?): Boolean {
-        val result = foreachResultCallback<Boolean> { callback, result -> callback.onOptionsItemSelected(fragment, result, item) }
-        return result ?: false
+    fun onOptionsItemSelected(fragment: Any, handled: Boolean, item: MenuItem?): Boolean {
+        val result = foreachResultCallback<Boolean> { callback, backResult -> callback.onOptionsItemSelected(fragment, backResult, item)}
+        return result ?: handled
     }
 
     fun onPause(fragment: Any) {

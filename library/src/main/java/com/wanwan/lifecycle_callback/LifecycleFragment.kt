@@ -16,14 +16,16 @@ import java.util.*
 /**
  * Created by yvan.botella on 12/10/2017.
  */
-open class LifecycleFragment : Fragment(), FragmentLifecycleImpl {
+abstract class LifecycleFragment : Fragment(), FragmentLifecycleImpl {
 
     override var callbacks = Stack<FragmentLifecycleCallbacks>()
 
-    //region added
-    fun onBackPressed(): Boolean {
-        return super.onBackPressed(this)
+    init {
+        registerLifecycleCallback()
     }
+
+    //region added
+    fun onBackPressed() = super.onBackPressed(this, false)
     //endregion added
 
     //region override
@@ -83,8 +85,11 @@ open class LifecycleFragment : Fragment(), FragmentLifecycleImpl {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        super<Fragment>.onOptionsItemSelected(item)
-        return super<FragmentLifecycleImpl>.onOptionsItemSelected(this, item)
+        val handled = super<FragmentLifecycleImpl>.onOptionsItemSelected(this, false, item)
+        if (!handled) {
+            return super<Fragment>.onOptionsItemSelected(item)
+        }
+        return handled
     }
 
     override fun onPause() {

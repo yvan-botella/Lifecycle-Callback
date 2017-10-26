@@ -19,7 +19,9 @@ import java.util.*
 interface ActivityLifecycleImpl {
 
     var callbacks: Stack<ActivityLifecycleCallbacks>
-    
+
+    fun registerLifecycleCallback()
+
     //region registering
     fun <T: ActivityLifecycleCallbacks> registerActivityCallback(callback: T): Boolean {
         if (!callbacks.contains(callback)) {
@@ -79,8 +81,9 @@ interface ActivityLifecycleImpl {
         foreachCallback { callback -> callback.onDestroy(activity) }
     }
 
-    fun onBackPressed(activity: Activity) {
-        foreachCallback { callback -> callback.onBackPressed(activity) }
+    fun onBackPressed(activity: Activity): Boolean {
+        val result = foreachResultCallback<Boolean> { callback, backResult -> callback.onBackPressed(activity, backResult)}
+        return result ?: false
     }
 
     fun onCreate(activity: Activity, savedInstanceState: Bundle?) {
@@ -140,7 +143,7 @@ interface ActivityLifecycleImpl {
     }
 
     fun onOptionsItemSelected(activity: Activity, item: MenuItem?): Boolean {
-        val result = foreachResultCallback<Boolean> { callback, result -> callback.onOptionsItemSelected(activity, result, item)}
+        val result = foreachResultCallback<Boolean> { callback, backResult -> callback.onOptionsItemSelected(activity, backResult, item)}
         return result ?: false
     }
 

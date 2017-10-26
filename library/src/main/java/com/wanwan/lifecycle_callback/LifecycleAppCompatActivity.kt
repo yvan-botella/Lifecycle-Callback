@@ -1,5 +1,6 @@
 package com.wanwan.lifecycle_callback
 
+import android.app.Activity
 import android.app.Fragment
 import android.content.Context
 import android.content.Intent
@@ -16,9 +17,13 @@ import java.util.*
 /**
  * Created by yvan.botella on 12/10/2017.
  */
-open class LifecycleAppCompatActivity : AppCompatActivity(), ActivityLifecycleImpl {
+abstract class LifecycleAppCompatActivity : AppCompatActivity(), ActivityLifecycleImpl {
 
     override var callbacks = Stack<ActivityLifecycleCallbacks>()
+
+    init {
+        registerLifecycleCallback()
+    }
 
     //region override
 
@@ -58,8 +63,10 @@ open class LifecycleAppCompatActivity : AppCompatActivity(), ActivityLifecycleIm
     }
 
     override fun onBackPressed() {
-//        super<AppCompatActivity>.onBackPressed()
-        super<ActivityLifecycleImpl>.onBackPressed(this)
+        val handled = super<ActivityLifecycleImpl>.onBackPressed(this)
+        if (!handled) {
+            super<AppCompatActivity>.onBackPressed()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,8 +140,11 @@ open class LifecycleAppCompatActivity : AppCompatActivity(), ActivityLifecycleIm
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        super<AppCompatActivity>.onOptionsItemSelected(item)
-        return super<ActivityLifecycleImpl>.onOptionsItemSelected(this, item)
+        val handled = super<ActivityLifecycleImpl>.onOptionsItemSelected(this, item)
+        if (!handled) {
+            return super<AppCompatActivity>.onOptionsItemSelected(item)
+        }
+        return handled
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
