@@ -19,23 +19,23 @@ interface FragmentLifecycleCallbacks: TAG {
    fun onBackPressed(fragment: Any, handled: Boolean?): Boolean = handled ?: false
    //endregion added
 
-   fun onActivityCreated(fragment: Any, savedInstanceState: Bundle?): Unit? = null
-   fun onActivityResult(fragment: Any, requestCode: Int, resultCode: Int, data: Intent?): Unit? = null
-   fun onAttach(fragment: Any, context: Context?): Unit? = null
-   fun onAttachFragment(fragment: Any, attachfragment: Any?): Unit? = null
-   fun onDestroy(fragment: Any): Unit? = null
-   fun onConfigurationChanged(fragment: Any, newConfig: Configuration?): Unit? = null
-   fun onCreate(fragment: Any, savedInstanceState: Bundle?): Unit? = null
+   fun onActivityCreated(fragment: Any, savedInstanceState: Bundle?) = null
+   fun onActivityResult(fragment: Any, requestCode: Int, resultCode: Int, data: Intent?) = null
+   fun onAttach(fragment: Any, context: Context?) = null
+   fun onAttachFragment(fragment: Any, attachfragment: Any?) = null
+   fun onDestroy(fragment: Any) = null
+   fun onConfigurationChanged(fragment: Any, newConfig: Configuration?) = null
+   fun onCreate(fragment: Any, savedInstanceState: Bundle?) = null
    fun onCreateView(fragment: Any, backResult: View?, inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? = null
-   fun onDetach(fragment: Any): Unit? = null
-   fun onDestroyView(fragment: Any): Unit? = null
-   fun onLowMemory(fragment: Any): Unit? = null
+   fun onDetach(fragment: Any) = null
+   fun onDestroyView(fragment: Any) = null
+   fun onLowMemory(fragment: Any) = null
    fun onOptionsItemSelected(fragment: Any, handled: Boolean?, item: MenuItem?): Boolean? = handled ?: false
-   fun onPause(fragment: Any): Unit? = null
-   fun onRequestPermissionsResult(fragment: Any, requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?): Unit? = null
-   fun onResume(fragment: Any): Unit? = null
-   fun onSaveInstanceState(fragment: Any, outState: Bundle?): Unit? = null
-   fun onStart(fragment: Any): Unit? = null
-   fun onStop(fragment: Any): Unit? = null
-   fun onViewCreated(fragment: Any, view: View?, savedInstanceState: Bundle?): Unit? = null
+   fun onPause(fragment: Any) = null
+   fun onRequestPermissionsResult(fragment: Any, requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?) = null
+   fun onResume(fragment: Any) = null
+   fun onSaveInstanceState(fragment: Any, outState: Bundle?) = null
+   fun onStart(fragment: Any) = null
+   fun onStop(fragment: Any) = null
+   fun onViewCreated(fragment: Any, view: View?, savedInstanceState: Bundle?) = null
 }

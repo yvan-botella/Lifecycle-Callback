@@ -53,6 +53,10 @@ interface ActivityLifecycleImpl {
     //endregion tools
 
     //region override
+    fun onActivityReenter(activity: Activity, resultCode: Int, data: Intent?) {
+        foreachCallback { callback -> callback.onActivityReenter(activity, resultCode, data) }
+    }
+
     fun onAttachedToWindow(activity: Activity) {
         foreachCallback { callback -> callback.onAttachedToWindow(activity) }
     }
@@ -154,5 +158,5 @@ interface ActivityLifecycleImpl {
     fun onRestoreInstanceState(activity: Activity, savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         foreachCallback { callback -> callback.onRestoreInstanceState(activity, savedInstanceState, persistentState) }
     }
-    //endregion override
+     //endregion override
 }

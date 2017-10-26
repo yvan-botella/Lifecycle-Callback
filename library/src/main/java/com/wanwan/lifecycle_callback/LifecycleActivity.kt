@@ -26,6 +26,11 @@ abstract class LifecycleActivity : Activity(), ActivityLifecycleImpl {
 
     //region override
 
+    override fun onActivityReenter(resultCode: Int, data: Intent?) {
+        super<Activity>.onActivityReenter(resultCode, data)
+        return super<ActivityLifecycleImpl>.onActivityReenter(this, resultCode, data)
+    }
+
     override fun onAttachedToWindow() {
         super<Activity>.onAttachedToWindow()
         super<ActivityLifecycleImpl>.onAttachedToWindow(this)
@@ -155,6 +160,5 @@ abstract class LifecycleActivity : Activity(), ActivityLifecycleImpl {
         super<Activity>.onRestoreInstanceState(savedInstanceState, persistentState)
         return super<ActivityLifecycleImpl>.onRestoreInstanceState(this, savedInstanceState, persistentState)
     }
-
     //endregion override
 }
