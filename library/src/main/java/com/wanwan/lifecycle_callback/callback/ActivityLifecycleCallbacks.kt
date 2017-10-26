@@ -15,30 +15,30 @@ import com.wanwan.lifecycle_callback.protocol.TAG
  * Created by yvan.botella on 12/10/2017.
  */
 interface ActivityLifecycleCallbacks: TAG {
-   fun onActivityReenter(activity: Activity, resultCode: Int, data: Intent?) = null
-   fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) = null
-   fun onAttachFragment(activity: Activity, fragment: Fragment?) = null
-   fun onAttachedToWindow(activity: Activity) = null
+   fun onActivityReenter(activity: Activity, resultCode: Int, data: Intent?): Unit? = null
+   fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?): Unit? = null
+   fun onAttachFragment(activity: Activity, fragment: Fragment?): Unit? = null
+   fun onAttachedToWindow(activity: Activity): Unit? = null
    fun onBackPressed(activity: Activity, handled: Boolean?): Boolean = handled ?: false
-   fun onCreate(activity: Activity, savedInstanceState: Bundle?) = null
-   fun onCreate(activity: Activity, savedInstanceState: Bundle?, persistentState: PersistableBundle?) = null
+   fun onCreate(activity: Activity, savedInstanceState: Bundle?): Unit? = null
+   fun onCreate(activity: Activity, savedInstanceState: Bundle?, persistentState: PersistableBundle?): Unit? = null
    fun onCreateView(activity: Activity, backResult: View?, name: String?, context: Context?, attrs: AttributeSet?): View? = null
    fun onCreateView(activity: Activity, backResult: View?, parent: View?, name: String?, context: Context?, attrs: AttributeSet?): View? = null
-   fun onDestroy(activity: Activity) = null
-   fun onDetachedFromWindow(activity: Activity) = null
-   fun onNewIntent(activity: Activity, intent: Intent?) = null
+   fun onDestroy(activity: Activity): Unit? = null
+   fun onDetachedFromWindow(activity: Activity): Unit? = null
+   fun onNewIntent(activity: Activity, intent: Intent?): Unit? = null
    fun onOptionsItemSelected(activity: Activity, handled: Boolean?, item: MenuItem?): Boolean = handled ?: false
-   fun onPause(activity: Activity) = null
-   fun onPostCreate(activity: Activity, savedInstanceState: Bundle?) = null
-   fun onPostCreate(activity: Activity, savedInstanceState: Bundle?, persistentState: PersistableBundle?) = null
-   fun onPostResume(activity: Activity) = null
-   fun onRestart(activity: Activity) = null
-   fun onResume(activity: Activity) = null
-   fun onRestoreInstanceState(activity: Activity, savedInstanceState: Bundle?) = null
-   fun onRestoreInstanceState(activity: Activity, savedInstanceState: Bundle?, persistentState: PersistableBundle?) = null
-   fun onStart(activity: Activity) = null
-   fun onSaveInstanceState(activity: Activity, outState: Bundle?) = null
-   fun onSaveInstanceState(activity: Activity, outState: Bundle?, outPersistentState: PersistableBundle?) = null
-   fun onStop(activity: Activity) = null
-   fun onTrimMemory(activity: Activity, level: Int) = null
+   fun onPause(activity: Activity): Unit? = null
+   fun onPostCreate(activity: Activity, savedInstanceState: Bundle?): Unit? = null
+   fun onPostCreate(activity: Activity, savedInstanceState: Bundle?, persistentState: PersistableBundle?): Unit? = null
+   fun onPostResume(activity: Activity): Unit? = null
+   fun onRestart(activity: Activity): Unit? = null
+   fun onResume(activity: Activity): Unit? = null
+   fun onRestoreInstanceState(activity: Activity, savedInstanceState: Bundle?): Unit? = null
+   fun onRestoreInstanceState(activity: Activity, savedInstanceState: Bundle?, persistentState: PersistableBundle?): Unit? = null
+   fun onStart(activity: Activity): Unit? = null
+   fun onSaveInstanceState(activity: Activity, outState: Bundle?): Unit? = null
+   fun onSaveInstanceState(activity: Activity, outState: Bundle?, outPersistentState: PersistableBundle?): Unit? = null
+   fun onStop(activity: Activity): Unit? = null
+   fun onTrimMemory(activity: Activity, level: Int): Unit? = null
 }
