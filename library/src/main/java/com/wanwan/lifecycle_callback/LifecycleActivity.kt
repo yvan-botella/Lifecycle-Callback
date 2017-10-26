@@ -28,7 +28,7 @@ abstract class LifecycleActivity : Activity(), ActivityLifecycleImpl {
 
     override fun onActivityReenter(resultCode: Int, data: Intent?) {
         super<Activity>.onActivityReenter(resultCode, data)
-        return super<ActivityLifecycleImpl>.onActivityReenter(this, resultCode, data)
+        super<ActivityLifecycleImpl>.onActivityReenter(this, resultCode, data)
     }
 
     override fun onAttachedToWindow() {
@@ -153,12 +153,12 @@ abstract class LifecycleActivity : Activity(), ActivityLifecycleImpl {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super<Activity>.onRestoreInstanceState(savedInstanceState)
-        return super<ActivityLifecycleImpl>.onRestoreInstanceState(this, savedInstanceState)
+        super<ActivityLifecycleImpl>.onRestoreInstanceState(this, savedInstanceState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super<Activity>.onRestoreInstanceState(savedInstanceState, persistentState)
-        return super<ActivityLifecycleImpl>.onRestoreInstanceState(this, savedInstanceState, persistentState)
+        super<ActivityLifecycleImpl>.onRestoreInstanceState(this, savedInstanceState, persistentState)
     }
     //endregion override
 }

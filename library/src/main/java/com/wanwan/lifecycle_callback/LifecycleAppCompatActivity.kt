@@ -27,6 +27,11 @@ abstract class LifecycleAppCompatActivity : AppCompatActivity(), ActivityLifecyc
 
     //region override
 
+    override fun onActivityReenter(resultCode: Int, data: Intent?) {
+        super<AppCompatActivity>.onActivityReenter(resultCode, data)
+        super<ActivityLifecycleImpl>.onActivityReenter(this, resultCode, data)
+    }
+
     override fun onAttachedToWindow() {
         super<AppCompatActivity>.onAttachedToWindow()
         super<ActivityLifecycleImpl>.onAttachedToWindow(this)
