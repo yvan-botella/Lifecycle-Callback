@@ -59,7 +59,7 @@ abstract class LifecycleFragment : Fragment(), FragmentLifecycleImpl {
         super<FragmentLifecycleImpl>.onCreate(this, savedInstanceState = null)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super<Fragment>.onCreateView(inflater, container, savedInstanceState)
         return super<FragmentLifecycleImpl>.onCreateView(this, inflater, container, savedInstanceState)
     }
@@ -107,7 +107,7 @@ abstract class LifecycleFragment : Fragment(), FragmentLifecycleImpl {
         super<FragmentLifecycleImpl>.onResume(this)
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super<Fragment>.onSaveInstanceState(outState)
         super<FragmentLifecycleImpl>.onSaveInstanceState(this, outState)
     }
@@ -122,7 +122,7 @@ abstract class LifecycleFragment : Fragment(), FragmentLifecycleImpl {
         super<FragmentLifecycleImpl>.onStop(this)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super<Fragment>.onViewCreated(view, savedInstanceState)
         super<FragmentLifecycleImpl>.onViewCreated(this, view, savedInstanceState)
     }

@@ -75,7 +75,7 @@ abstract class LifecycleAppCompatActivity : AppCompatActivity(), ActivityLifecyc
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super<AppCompatActivity>.onCreate(savedInstanceState)
+        super<AppCompatActivity>.onCreate(savedInstanceState ?: Bundle())
         super<ActivityLifecycleImpl>.onCreate(this, savedInstanceState)
     }
 

@@ -1,7 +1,5 @@
 package com.wanwan.lifecycle_callback.protocol
 
-import android.app.Fragment
-
 /**
  * Created by botella_y on 13/10/2017.
  */
@@ -14,8 +12,6 @@ interface TAG {
     }
 
     companion object {
-        fun get(`object`: Any): String {
-            return `object`.javaClass.simpleName
-        }
+        fun get(`object`: Any) = `object`.javaClass.simpleName
     }
 }

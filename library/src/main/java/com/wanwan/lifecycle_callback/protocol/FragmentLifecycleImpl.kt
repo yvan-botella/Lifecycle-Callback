@@ -21,7 +21,7 @@ interface FragmentLifecycleImpl {
     fun registerLifecycleCallback()
 
     //region registering
-    fun <T: FragmentLifecycleCallbacks> registerFragmentCallback(callback: T): Boolean  {
+    fun <T : FragmentLifecycleCallbacks> registerFragmentCallback(callback: T): Boolean {
         if (!callbacks.contains(callback)) {
             callbacks.push(callback)
             return true
@@ -31,7 +31,7 @@ interface FragmentLifecycleImpl {
     //endregion register
 
     //region tools
-    fun foreachCallback(lifecycle:(FragmentLifecycleCallbacks) -> Any?) {
+    fun foreachCallback(lifecycle: (FragmentLifecycleCallbacks) -> Any?) {
         val iterator = callbacks.iterator()
 
         while (iterator.hasNext()) {
@@ -39,7 +39,7 @@ interface FragmentLifecycleImpl {
         }
     }
 
-    fun <U> foreachResultCallback(lifecycle:(FragmentLifecycleCallbacks, U?) -> U?): U? {
+    fun <U> foreachResultCallback(lifecycle: (FragmentLifecycleCallbacks, U?) -> U?): U? {
         val iterator = callbacks.iterator()
         var result: U? = null
 
@@ -84,8 +84,9 @@ interface FragmentLifecycleImpl {
         foreachCallback { callback -> callback.onCreate(fragment, savedInstanceState = null) }
     }
 
-    fun onCreateView(fragment: Any, inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return foreachResultCallback<View> { callback, backResult -> callback.onCreateView(fragment, backResult, inflater, container, savedInstanceState) }
+    fun onCreateView(fragment: Any, inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
+            = foreachResultCallback<View> { callback, backResult ->
+        callback.onCreateView(fragment, backResult, inflater, container, savedInstanceState)
     }
 
     fun onDetach(fragment: Any) {
@@ -101,7 +102,9 @@ interface FragmentLifecycleImpl {
     }
 
     fun onOptionsItemSelected(fragment: Any, handled: Boolean, item: MenuItem?): Boolean {
-        val result = foreachResultCallback<Boolean> { callback, backResult -> callback.onOptionsItemSelected(fragment, backResult, item)}
+        val result = foreachResultCallback<Boolean> { callback, backResult ->
+            callback.onOptionsItemSelected(fragment, backResult, item)
+        }
         return result ?: handled
     }
 
@@ -117,7 +120,7 @@ interface FragmentLifecycleImpl {
         foreachCallback { callback -> callback.onResume(fragment) }
     }
 
-    fun onSaveInstanceState(fragment: Any, outState: Bundle?) {
+    fun onSaveInstanceState(fragment: Any, outState: Bundle) {
         foreachCallback { callback -> callback.onSaveInstanceState(fragment, outState) }
     }
 
@@ -129,7 +132,7 @@ interface FragmentLifecycleImpl {
         foreachCallback { callback -> callback.onStop(fragment) }
     }
 
-    fun onViewCreated(fragment: Any, view: View?, savedInstanceState: Bundle?) {
+    fun onViewCreated(fragment: Any, view: View, savedInstanceState: Bundle?) {
         foreachCallback { callback -> callback.onViewCreated(fragment, view, savedInstanceState) }
     }
 

@@ -22,11 +22,11 @@ interface FragmentLifecycleCallbacks: TAG {
    fun onActivityCreated(fragment: Any, savedInstanceState: Bundle?): Unit? = null
    fun onActivityResult(fragment: Any, requestCode: Int, resultCode: Int, data: Intent?): Unit? = null
    fun onAttach(fragment: Any, context: Context?): Unit? = null
-   fun onAttachFragment(fragment: Any, attachfragment: Any?): Unit? = null
+   fun onAttachFragment(fragment: Any, attachFragment: Any?): Unit? = null
    fun onDestroy(fragment: Any): Unit? = null
    fun onConfigurationChanged(fragment: Any, newConfig: Configuration?): Unit? = null
    fun onCreate(fragment: Any, savedInstanceState: Bundle?): Unit? = null
-   fun onCreateView(fragment: Any, backResult: View?, inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? = null
+   fun onCreateView(fragment: Any, backResult: View?, inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = null
    fun onDetach(fragment: Any): Unit? = null
    fun onDestroyView(fragment: Any): Unit? = null
    fun onLowMemory(fragment: Any): Unit? = null
@@ -34,8 +34,8 @@ interface FragmentLifecycleCallbacks: TAG {
    fun onPause(fragment: Any): Unit? = null
    fun onRequestPermissionsResult(fragment: Any, requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?): Unit? = null
    fun onResume(fragment: Any): Unit? = null
-   fun onSaveInstanceState(fragment: Any, outState: Bundle?): Unit? = null
+   fun onSaveInstanceState(fragment: Any, outState: Bundle): Unit? = null
    fun onStart(fragment: Any): Unit? = null
    fun onStop(fragment: Any): Unit? = null
-   fun onViewCreated(fragment: Any, view: View?, savedInstanceState: Bundle?): Unit? = null
+   fun onViewCreated(fragment: Any, view: View, savedInstanceState: Bundle?): Unit? = null
 }
