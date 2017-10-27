@@ -18,7 +18,7 @@ android {
     }
 
     buildTypes {
-        android.libraryVariants.all { variant -> formatVariantOutput(parent, defaultConfig, variant) }
+//        android.libraryVariants.all { variant -> formatVariantOutput(parent, defaultConfig, variant) }
 
         release {
             minifyEnabled false
