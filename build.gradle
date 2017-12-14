@@ -10,6 +10,7 @@ buildscript {
     ext.android_support_version = "$compile_sdk_version.0.0"
     repositories {
         jcenter()
+        google()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
